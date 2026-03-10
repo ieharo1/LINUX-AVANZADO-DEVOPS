@@ -1,12 +1,309 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="app.js"></script>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Linux avanzado para DevOps - Cuarto-cap</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <h1>Cuarto-cap</h1>
+          <p>Toolkit DevOps avanzado</p>
+        </div>
+        <nav>
+          <a href="#overview">Resumen</a>
+          <a href="#admin">Administracion</a>
+          <a href="#auto">Automatizacion</a>
+          <a href="#seguridad">Seguridad</a>
+          <a href="#monitor">Monitoreo</a>
+          <a href="#logs">Logs</a>
+          <a href="#redes">Redes avanzadas</a>
+          <a href="#terminal">Terminal</a>
+          <a href="#scripts">Scripts bash</a>
+          <a href="#docs">Documentacion</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header class="hero">
+          <div>
+            <p class="tag">Linux avanzado</p>
+            <h2>Toolkit para administracion y operaciones</h2>
+            <p>
+              Curso avanzado para DevOps con comandos de servicios, seguridad,
+              monitoreo y redes.
+            </p>
+          </div>
+          <div class="hero-box">
+            <h3>Comando esencial</h3>
+            <code>$ systemctl status nginx</code>
+            <p>Inspecciona el estado de servicios en Linux.</p>
+          </div>
+        </header>
+
+        <section class="search">
+          <input id="search" type="search" placeholder="Buscar comando o tema..." />
+          <span>Ejemplo: journalctl, ufw, tcpdump</span>
+        </section>
+
+        <section id="overview" class="panel">
+          <h3>Resumen del toolkit</h3>
+          <div class="grid three">
+            <article class="card">
+              <h4>Administracion</h4>
+              <p>Gestion de servicios y estado del sistema.</p>
+            </article>
+            <article class="card">
+              <h4>Seguridad</h4>
+              <p>Firewall, hardening y mitigacion.</p>
+            </article>
+            <article class="card">
+              <h4>Observabilidad</h4>
+              <p>Monitoreo y logs en tiempo real.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="admin" class="panel">
+          <div class="panel-header">
+            <h3>Administracion del sistema</h3>
+            <p>Servicios y registro de eventos.</p>
+          </div>
+          <div class="grid three">
+            <article
+              class="card command-card"
+              data-command="systemctl status nginx"
+              data-output="nginx.service - active (running)"
+              data-tags="systemctl"
+            >
+              <h4>systemctl</h4>
+              <p>Administra servicios systemd.</p>
+              <code>$ systemctl status nginx</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ systemctl restart nginx">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="journalctl -u nginx"
+              data-output="Logs del servicio\\nMar 10 10:10: nginx started"
+              data-tags="journalctl"
+            >
+              <h4>journalctl</h4>
+              <p>Consulta logs del sistema.</p>
+              <code>$ journalctl -u nginx</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ journalctl -xe">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="service ssh status"
+              data-output="ssh service is running"
+              data-tags="service"
+            >
+              <h4>service</h4>
+              <p>Compatibilidad con init legacy.</p>
+              <code>$ service ssh status</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ service nginx restart">Copiar</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="auto" class="panel">
+          <h3>Automatizacion</h3>
+          <div class="grid two">
+            <article class="card">
+              <h4>crontab</h4>
+              <p>Programa tareas recurrentes.</p>
+              <code>0 3 * * * /usr/local/bin/backup.sh</code>
+            </article>
+            <article class="card">
+              <h4>Bash scripting</h4>
+              <p>Automatiza tareas operativas con scripts.</p>
+              <code>bash bash/backup.sh</code>
+            </article>
+          </div>
+        </section>
+
+        <section id="seguridad" class="panel">
+          <h3>Seguridad</h3>
+          <div class="grid three">
+            <article class="card command-card" data-command="ufw status" data-output="Status: active" data-tags="ufw">
+              <h4>ufw</h4>
+              <p>Firewall facil de configurar.</p>
+              <code>$ ufw status</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ ufw allow 22/tcp">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="iptables -L"
+              data-output="Chain INPUT (policy ACCEPT)"
+              data-tags="iptables"
+            >
+              <h4>iptables</h4>
+              <p>Reglas de firewall avanzadas.</p>
+              <code>$ iptables -L</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ iptables -A INPUT -p tcp --dport 80 -j ACCEPT">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="fail2ban-client status"
+              data-output="Status: running"
+              data-tags="fail2ban"
+            >
+              <h4>fail2ban</h4>
+              <p>Bloquea ataques por fuerza bruta.</p>
+              <code>$ fail2ban-client status</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ fail2ban-client status sshd">Copiar</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="monitor" class="panel">
+          <h3>Monitoreo</h3>
+          <div class="grid three">
+            <article class="card command-card" data-command="htop" data-output="Monitor interactivo" data-tags="htop">
+              <h4>htop</h4>
+              <p>Monitor interactivo de procesos.</p>
+              <code>$ htop</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ htop">Copiar</button>
+              </div>
+            </article>
+            <article class="card command-card" data-command="iotop" data-output="I/O por proceso" data-tags="iotop">
+              <h4>iotop</h4>
+              <p>Monitorea I/O de disco.</p>
+              <code>$ iotop</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ iotop -o">Copiar</button>
+              </div>
+            </article>
+            <article
+              class="card command-card"
+              data-command="vmstat 1"
+              data-output="Procesos memoria CPU"
+              data-tags="vmstat"
+            >
+              <h4>vmstat</h4>
+              <p>Metricas de memoria y CPU.</p>
+              <code>$ vmstat 1</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ vmstat 1 5">Copiar</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="logs" class="panel">
+          <h3>Logs</h3>
+          <div class="grid two">
+            <article class="card">
+              <h4>/var/log</h4>
+              <p>Ubicacion de logs de sistema y servicios.</p>
+              <code>$ ls /var/log</code>
+            </article>
+            <article class="card">
+              <h4>tail -f</h4>
+              <p>Observa logs en tiempo real.</p>
+              <code>$ tail -f /var/log/syslog</code>
+            </article>
+          </div>
+        </section>
+
+        <section id="redes" class="panel">
+          <h3>Redes avanzadas</h3>
+          <div class="grid three">
+            <article class="card command-card" data-command="ss -tulpn" data-output="Puertos activos" data-tags="ss">
+              <h4>ss</h4>
+              <p>Reemplazo moderno de netstat.</p>
+              <code>$ ss -tulpn</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ ss -s">Copiar</button>
+              </div>
+            </article>
+            <article class="card command-card" data-command="tcpdump -i eth0" data-output="Capturando paquetes" data-tags="tcpdump">
+              <h4>tcpdump</h4>
+              <p>Captura trafico en red.</p>
+              <code>$ tcpdump -i eth0</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ tcpdump -i eth0 port 443">Copiar</button>
+              </div>
+            </article>
+            <article class="card command-card" data-command="nmap -sV 192.168.1.10" data-output="Escaneo de puertos" data-tags="nmap">
+              <h4>nmap</h4>
+              <p>Escaneo de servicios.</p>
+              <code>$ nmap -sV 192.168.1.10</code>
+              <div class="actions">
+                <button class="run-btn">Ejecutar</button>
+                <button class="copy-btn" data-copy="$ nmap -sS 192.168.1.0/24">Copiar</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="terminal" class="panel terminal-panel">
+          <h3>Terminal simulada</h3>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span></span><span></span><span></span>
+              <p>bash - devops@linux</p>
+            </div>
+            <div id="terminal-output" class="terminal-output"></div>
+            <div class="terminal-input">
+              <span>$</span>
+              <input id="terminal-input" type="text" placeholder="Escribe un comando..." />
+              <button id="terminal-run">Ejecutar</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="scripts" class="panel">
+          <h3>Scripts bash incluidos</h3>
+          <div class="grid three">
+            <article class="card">
+              <h4>server_monitor.sh</h4>
+              <code>bash bash/server_monitor.sh</code>
+            </article>
+            <article class="card">
+              <h4>backup.sh</h4>
+              <code>bash bash/backup.sh</code>
+            </article>
+            <article class="card">
+              <h4>log_watch.sh</h4>
+              <code>bash bash/log_watch.sh</code>
+            </article>
+          </div>
+        </section>
+
+        <section id="docs" class="panel">
+          <h3>Documentacion</h3>
+          <p>Guia completa en <strong>docs/guia.md</strong>.</p>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
