@@ -1,4 +1,4 @@
-# Linux avanzado para DevOps - Cuarto-cap
+# Linux avanzado para DevOps
 
 Toolkit avanzado de administracion Linux para operaciones y DevOps.
 
